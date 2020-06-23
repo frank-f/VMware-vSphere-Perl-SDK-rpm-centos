@@ -1,11 +1,11 @@
 # ERROR: No build ID note found in .../opt/VMware-vSphere-Perl-SDK/lib/perl5/VMware/pyexe/datetime.so
 #%%global debug_package %%{nil}
 
-%global release_tag 3561779
+%global release_tag 8156551
 
 Summary:   vSphere Perl SDK for vSphere
 Name:      VMware-vSphere-Perl-SDK
-Version:   6.0.0
+Version:   6.7.0
 Release:   %{release_tag}.2%{?dist}
 License:   VMware
 Source:    %{name}-%{version}-%{release_tag}.x86_64.tar.gz
@@ -44,7 +44,7 @@ Requires: uuid-perl
 Requires: perl-Devel-StackTrace perl-Class-Data-Inheritable perl-Convert-ASN1 perl-Crypt-OpenSSL-RSA
 Requires: perl-Crypt-OpenSSL-X509
 Requires: perl-Exception-Class-TryCatch perl-Archive-Zip perl-Path-Class perl-Class-MethodMaker perl-Data-Dump perl-SOAP-Lite perl-Socket6 perl-IO-Socket-INET6 perl-Net-INET6Glue
-
+Requires: perl-Text-Template
 %if 0%{?el6}
 Requires: perl-Class-Accessor perl-Config-Tiny
 %endif
@@ -163,9 +163,9 @@ make install
 
 # must use old lib/libwww-perl-5.805 in 6.0.0-3561779 otherwise check_vmware_api.pl hangs
 # check_vmware_api.pl hangs with and perl-libwww-perl-6.05-2.el7.noarch perl-LWP-Protocol-https-6.04 
-%{__cp} -rp lib/libwww-perl-*/lib/LWP $RPM_BUILD_ROOT%{prefix}/lib/perl5/LWP
+#%{__cp} -rp lib/libwww-perl-*/lib/LWP $RPM_BUILD_ROOT%{prefix}/lib/perl5/LWP
 # check_vmware_api.pl hangs with perl-Net-HTTP-6.06-2.el7.noarch
-%{__cp} -rp lib/libwww-perl-*/lib/Net $RPM_BUILD_ROOT%{prefix}/lib/perl5/Net
+#%{__cp} -rp lib/libwww-perl-*/lib/Net $RPM_BUILD_ROOT%{prefix}/lib/perl5/Net
 
 # copy executables
 %{__cp} -rp bin/* $RPM_BUILD_ROOT%{prefix}/bin

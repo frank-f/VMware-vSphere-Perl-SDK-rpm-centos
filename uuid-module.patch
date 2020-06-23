@@ -1,15 +1,15 @@
 # $Id$
 --- bin/vmware-uninstall-vSphere-CLI.pl	2011-06-02 01:52:30.000000000 +1000
 +++ bin/vmware-uninstall-vSphere-CLI.pl	2011-08-29 13:15:19.558032827 +1000
-@@ -2370,7 +2370,7 @@
+@@ -2379,7 +2379,7 @@
+     {'module' => 'version',                       'version' => '0.78',     'path' => 'version-0.78'},
      {'module' => 'Data::Dumper',                  'version' => '2.121',    'path' => 'Data-Dumper-2.121'},
-     {'module' => 'Class::MethodMaker',            'version' => '2.10',     'path' => 'Class-MethodMaker-2.10'},
      {'module' => 'HTML::Parser',                  'version' => '3.60',     'path' => 'HTML-Parser-3.60'},
--    {'module' => 'UUID',                          'version' => '0.03',     'path' => 'UUID-0.03'},
+-    {'module' => 'UUID',                          'version' => '0.27',     'path' => 'UUID-0.27'},
 +    {'module' => 'Data::UUID',                    'version' => '1.217',    'path' => 'Data-UUID-1.217'},
-     {'module' => 'Data::Dump',                    'version' => '1.15',     'path' => 'Data-Dump-1.15'},
-     {'module' => 'SOAP::Lite',                    'version' => '0.710.08', 'path' => 'SOAP-Lite-0.710.08'},
-     {'module' => 'URI',                           'version' => '1.37',     'path' => 'URI-1.37'},
+     {'module' => 'XML::SAX',                      'version' => '0.99',     'path' => 'XML-SAX-0.99'},
+     {'module' => 'XML::NamespaceSupport',         'version' => '1.12',     'path' => 'XML-NamespaceSupport-1.12'},
+     {'module' => 'XML::LibXML::Common',           'version' => '2.0129',   'path' => 'XML-LibXML-Common-2.0129'},
 --- lib/WSMan/share/WSMan/WSBasic.pm	2011-05-17 08:22:08.000000000 +1000
 +++ lib/WSMan/share/WSMan/WSBasic.pm	2011-08-29 13:01:52.541492208 +1000
 @@ -3,7 +3,7 @@
@@ -45,3 +45,28 @@
                            'SOAP::Lite' => '0.67'},
     #
     # These macros put things in the usual spot if you are running
+--- lib/VMware/share/VMware/SSOConnection.pm    2018-03-27 11:13:39.000000000 +0200
++++ lib/VMware/share/VMware/SSOConnection.pm    2020-06-23 07:49:10.514611483 +0200
+@@ -24,7 +24,7 @@
+ use utf8;
+ use Text::Template;
+ use LWP::UserAgent;
+-use UUID;
++use Data::UUID;
+ use Date::Format;
+ use HTML::Entities;
+ use XML::LibXML;
+@@ -295,11 +295,8 @@
+ #@return UUID
+ #
+ sub generate_uuid {
+-   my $uuid;
+-   my $result;
+-   UUID::generate($uuid);
+-   UUID::unparse($uuid, $result);
+-   return sprintf("_%s", $result);
++    my $ug = new Data::UUID;
++    return $ug->create_str();
+ }
+ 
+ #
