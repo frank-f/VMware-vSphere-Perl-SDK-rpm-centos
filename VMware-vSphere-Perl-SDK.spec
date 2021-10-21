@@ -1,11 +1,11 @@
 # ERROR: No build ID note found in .../opt/VMware-vSphere-Perl-SDK/lib/perl5/VMware/pyexe/datetime.so
-#%%global debug_package %%{nil}
+%define debug_package %{nil}
 
-%global release_tag 8156551
+%global release_tag 17698549
 
 Summary:   vSphere Perl SDK for vSphere
 Name:      VMware-vSphere-Perl-SDK
-Version:   6.7.0
+Version:   7.0.0
 Release:   %{release_tag}.2%{?dist}
 License:   VMware
 Source:    %{name}-%{version}-%{release_tag}.x86_64.tar.gz
@@ -182,6 +182,10 @@ make install
 
 
 %changelog
+* Thu Oct 21 2021 Frank Fenor <red@ct.ed> 7.0.0 17698549
+- update to 7.0.0
+- add EL8 support
+
 * Wed Jul 13 2016 Marcin Dulak <Marcin.Dulak@gmail.com> 6.0.0 3561779-2
 - update and package as a single RPM
 
