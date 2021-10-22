@@ -29,7 +29,6 @@ Requires: perl-Data-Dumper
 # check_vmware_api.pl fails with if the package below is missing:
 # VMWARE_API UNKNOWN - Missing perl module VMware::VIRuntime
 Requires: perl-XML-LibXML
-Requires: perl-Crypt-SSLeay
 # check_vmware_api.pl fails with if the package below is missing:
 # CHECK_VMWARE_API.PL CRITICAL - Server version unavailable at
 Requires: perl-libwww-perl
