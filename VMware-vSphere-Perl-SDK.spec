@@ -38,7 +38,7 @@ Requires: perl-LWP-Protocol-https
 Requires: perl-Net-HTTP
 %endif
 # uuid-perl replaces UUID thanks to uuid-module.patch
-Requires: uuid-perl
+Requires: perl(Data::UUID)
 
 Requires: perl-Devel-StackTrace perl-Class-Data-Inheritable perl-Convert-ASN1 perl-Crypt-OpenSSL-RSA
 Requires: perl-Crypt-OpenSSL-X509
